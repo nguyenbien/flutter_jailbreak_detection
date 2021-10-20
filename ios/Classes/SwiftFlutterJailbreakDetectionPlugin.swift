@@ -10,21 +10,21 @@ public class SwiftFlutterJailbreakDetectionPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        switch call.method {
-        case "isJailBroken":
-            let isJailBroken = DTTJailbreakDetection.isJailbroken()
-            result(isJailBroken)
-            break
-        case "canMockLocation":
-             let isJailBroken = DTTJailbreakDetection.isJailbroken()
-             result(isJailBroken || TARGET_OS_SIMULATOR)
-            break
-        case "isRealDevice":
-             let isRealDevice = !TARGET_OS_SIMULATOR
-             result(isRealDevice)
-            break
-        default:
-            result(FlutterMethodNotImplemented)
-        }
-  }
+      switch call.method {
+      case "isJailBroken":
+          let isJailBroken = DTTJailbreakDetection.isJailbroken()
+          result(isJailBroken)
+          break
+      case "canMockLocation":
+           let isJailBroken = DTTJailbreakDetection.isJailbroken()
+           result(isJailBroken || (TARGET_OS_SIMULATOR != 0))
+          break
+      case "isRealDevice":
+           let isRealDevice = (TARGET_OS_SIMULATOR == 0)
+           result(isRealDevice)
+          break
+      default:
+          result(FlutterMethodNotImplemented)
+      }
+}
 }
