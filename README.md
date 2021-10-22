@@ -13,7 +13,7 @@ In your flutter project add the dependency:
 ```yml
 dependencies:
   ...
-  tflutter_jailbreak_detection:
+  flutter_jailbreak_detection:
     git:
       url: https://github.com/nguyenbien/flutter_jailbreak_detection.git
       ref: trust_fall_v2
